@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Librarian Profile</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Prompt:ital,wght@1,300&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Balsamiq+Sans:ital@1&family=Hind+Siliguri&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital@1&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{url_for('static', filename=('css/profile.css'))}}">
+</head>
+<body>
+    <header>
+        <a href="" class="logo">User</a>
+        <input type="checkbox"  id="menu-bar">
+        <label for="menu-bar">Menu</label>
+        <nav class="navbar">
+            <ul>
+                <li>
+                    <a href="{{url_for('profile')}}">Profile</a>
+                </li>
+                <li>
+                    <a href="{{url_for('search_book_user')}}">Search Book</a>
+                </li>
+                <li>
+                    <a href="#">My Bookshelf</a>
+                    <ul>
+                        <li><a href="{{url_for('books_issued')}}">Issued Book</a></li>
+                        <li>
+                            <a href="{{url_for('books_reserved')}}">Reserved Book</a>
+                        </li>
+                        <li><a href="{{url_for('wishlist')}}">Wishlist</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="{{url_for('transactions')}}">Transactions</a>
+                </li>
+                <li>
+                    <a href="#">Account Settings</a>
+                    <ul>
+                        <li><a href="{{url_for('update_profile')}}">Update Profile</a></li>
+                        <li><a href="{{url_for('delete_profile')}}">Delete Account</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="{{url_for('logout')}}"> Log Out</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <div class="container">
+        <h2 class="h-primary">
+            Profile
+        </h2>
+        <div class="row">
+            <img src="{{url_for('static', filename = ('css/images/profile.png'))}}" alt="couldn't load" width="100px" height="100px">
+            
+            <table class="table">
+                <tbody>
+                    <tr>
+                        <td><i class="fa fa-user"></i>  User ID     :</td>
+                        <td>{{U_ID}}</td>
+                    </tr>
+                    <tr>
+                        <td><i class="fa fa-user"></i>  Name     :</td>
+                        <td>{{name}}</td>
+                    </tr>
+                    <tr>
+                        <td><i class="fa fa-envelope"></i>  Email ID :</td>
+                        <td>{{email}}</td>
+                    </tr>
+                    <tr>
+                        <td><i class="fa fa-address-card"></i>  Address  :</td>
+                        <td>{{address}}</td>
+                    </tr>
+                </tbody>
+            </table>
+            <br>
+        </div>
+        <h4>{{msg}}</h4>
+    </div>
+</body>
+</html>

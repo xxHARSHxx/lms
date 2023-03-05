@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Librarian Profile</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Prompt:ital,wght@1,300&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Balsamiq+Sans:ital@1&family=Hind+Siliguri&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital@1&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{url_for('static', filename=('css/add.css'))}}">
+</head>
+<body>
+    <header>
+        <a href="" class="logo">Librarian</a>
+        <input type="checkbox"  id="menu-bar">
+        <label for="menu-bar">Menu</label>
+        <nav class="navbar">
+            <ul>
+                <li>
+                    <a href="{{url_for('profile_lib')}}">Profile</a>
+                </li>
+                <li>
+                    <a href="#">Manage Books+</a>
+                    <ul>
+                        <li><a href="{{url_for('search_book_lib')}}">Search Book</a></li>
+                        <li><a href="{{url_for('add_book')}}">Add Book</a></li>
+                        <li><a href="{{url_for('remove_book')}}">Delete Book</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">Circulation+</a>
+                    <ul>
+                        <li><a href="{{url_for('issue_book')}}">Issue Book</a></li>
+                        <li>
+                            <a href="{{url_for('return_book')}}">Return Book</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">Reports+</a>
+                    <ul>
+                        <li><a href="{{url_for('issued_books')}}">Issued Books</a></li>
+                        <li><a href="{{url_for('reserved_books')}}">Reserved Books</a></li>
+                        <li>
+                            <a href="{{url_for('transaction_records')}}">All Transactions</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">Manage Shelf+</a>
+                        <ul>
+                            <li><a href="{{url_for('add_shelf')}}">Add Shelf</a></li>
+                            <li><a href="{{url_for('edit_shelf')}}">Edit Shelf</a></li>
+                            <li><a href="{{url_for('view_shelf')}}">View Shelf</a></li>
+                        </ul>
+                </li>
+                <li>
+                    <a href="#">Manage Users+</a>
+                    <ul>
+                        <li><a href="{{url_for('requests')}}">Requests</a></li>
+                        <li><a href="{{url_for('add_lib')}}">Add Librarian</a></li>
+                        <li><a href="{{url_for('delete_user')}}">Delete Users</a></li>
+                        <li><a href="{{url_for('view_members')}}">View Members</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="{{url_for('manage_fines')}}">Manage Fines</a>
+                </li>
+                <li>
+                    <a href="{{url_for('logout')}}"> Log Out</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <div class="container">
+        <h1>Delete User</h1>
+        <form action="/delete_user" method="post" class="form">
+            <div class="box">
+                <i class="fa fa-list-ol" aria-hidden="true"></i>
+                <input type="text" id="u_id" name="u_id" placeholder="Enter User ID" class="input">
+            </div>
+            <input type="submit" value="Delete" class="book">
+        </form>
+        <p>{{msg}}</p>
+    </div>
+</body>
+</html>

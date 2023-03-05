@@ -1,0 +1,363 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Balsamiq Sans', cursive;
+    text-transform: capitalize;
+    text-decoration: none;
+}
+body{
+    min-height: 100vh;
+    /* background: url('images/bgmain.jpg') no-repeat; */
+    /* background-size: cover; */
+    /* background-position: center;  */
+    background-color: #dbeeff;
+}
+header{
+    position: sticky;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: black;
+    color: white;
+    padding: 4px 3%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    z-index: 1000;
+}
+header .logo{
+    font-family: 'Comfortaa', cursive;
+    font-weight: bolder;
+    color: white;
+    font-size: 25px;
+}
+header .navbar ul{
+     list-style: none;
+}
+header .navbar ul li{
+    position: relative;
+    float: left;
+}
+header .navbar ul li a{
+    text-decoration: none;
+    color: white;
+    font-size: 16px;
+    padding: 5px 20px;
+    margin: 7px 3px;
+    display: block;
+}
+header .navbar ul li a:hover{
+    border-radius: 14px;
+    background-color: white;
+    color: black;
+}
+header .navbar ul li ul{
+    position: absolute;
+    left: 0;
+    width: 160px;
+    background: black;
+    display: none;
+    border-radius: 15px;
+}
+header .navbar ul li:focus-within>ul,
+header .navbar ul li:hover>ul{
+    display: initial;
+}
+header .navbar ul li ul li{
+    width: 100%;
+    /* border-top: 1px solid rgb(83, 83, 83); */
+}
+header .navbar ul li ul li ul{
+    left: 160px;
+    top: 0;
+}
+#menu-bar{
+    display: none;
+}
+header label{
+    font-size: 20px;
+    color: white;
+    cursor: pointer;
+    display: none;
+}
+/* home */
+#home{
+    display: flex;
+    flex-direction: column;
+    padding: 3px 250px;
+    height: 460px;
+    justify-content: center;
+    align-items: center;
+}
+#home::before{
+    content: "";
+    background: url('homebg.jpg') no-repeat center center/cover;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    z-index: -1;
+    height: 70%;
+    width: 100%;
+    opacity: 0.9;
+}
+
+#home h1{
+    color: white;
+    text-align: center;
+    margin: 30px;
+    font-size: 38px;
+}
+#home p{
+    color: white;
+    text-align: center;
+    font-size: 1.2rem;
+    font-family: 'DM Sans', sans-serif;
+}
+/* book search */
+.container{
+    display: flex;
+    width: 40%;
+    margin-left: 29%;
+    margin-top: 60px;
+    /* margin: 44px; */
+    padding-top: 30px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+    border-radius: 5px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+.form{
+    padding: 2px 5px;
+    font-size: 16px;
+    border-radius: 5px;
+    /* size: 80px; */
+}
+
+.book{
+    font-size: 16px;
+    
+    background: rgb(0, 40, 158);
+    border: none;
+    color: white;
+    border-radius: 6px;
+    cursor: pointer;
+    padding: 4px 6px;
+    margin-top: 5px;
+    margin-bottom: 10px;
+}
+.book:hover{
+    background-color: black;
+}
+/* table */
+/* .container{
+    margin-top: 80px;
+    /* width: 100%; */
+
+.container h2{
+    margin-bottom: 50px;
+    margin-left: 25%;
+}
+/* .container h2 img{
+    margin-right: 10px;
+    margin-top: 0px;
+} */
+.row{
+    width: 50%;
+    margin-left: 0%;
+    display: flex;
+}
+.row img{
+    margin: 40px;
+}
+.table{
+    width: 100%;
+    border-collapse: collapse;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+
+}
+.table td, .table th{
+    padding: 10px 12px;
+    border: 1px solid black;
+    text-align: center;
+}
+.table th{
+    background-color: rgb(53, 155, 190);
+    color: white;
+    font-size: 22px;
+}
+.table tbody tr {
+    border-bottom: 1px solid #dddddd;
+    font-size: 19px;
+}
+
+.table tbody tr:nth-of-type(even) {
+    background-color: #f3f3f3;
+}
+.up{
+    color: white;
+    text-decoration: none;
+}
+
+/* global class */
+.h-primary{
+    font-size: 32px;
+    font-family: 'Comfortaa', cursive;
+}
+.box{
+    border-bottom: 2px solid black;
+    margin: 4px 0px;
+}
+.input{
+    background: none;
+    width: 80%;
+    margin: 10px 6px;
+    font-size: 16px;
+    border: none;
+    outline: none;
+    color: black;
+}
+.btn{
+    display: block;
+    width: 10%;
+    font-size: 14px;
+    margin-left: 12%;
+    cursor: pointer;
+    outline: none;
+    padding: 4px 0px;
+    border-radius: 7px;
+    margin-top: 20px;
+    color: white;
+    background: rgb(0, 40, 158);
+    border: none;
+}
+.btn:hover{
+    color: white;
+    background: black;
+}
+.msg{
+    font-size: 26px;
+}
+
+@media(max-width: 970px){
+    header{
+        padding: 7px;
+        
+    }
+    header label{
+        display: inline;
+        font-size: 16px;
+    }
+    header .logo{
+        font-size: 22px;
+    }
+
+    header .navbar{
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: black;
+        display: none;
+        transition: all 0.3s ease;
+    }
+    header .navbar ul li{
+        width: 100%;
+    }
+    header .navbar ul li a{
+        font-size: 14px;
+    }
+    header .navbar ul li a:hover{
+        color: cyan;
+        background-color: black;
+    }
+    header .navbar ul li ul{
+        position: relative;
+        width: 100%;
+    }
+    header .navbar ul li ul li{
+        background: black;
+    }
+    header .navbar ul li ul li ul{
+        width: 100%;
+        left: 0;
+    }
+    #menu-bar:checked~.navbar{
+        display: initial;
+    }
+    #home::before{
+        height: 70%;
+    }
+    #home{
+        width: 100%;
+        height: 460px;
+        padding: 0px 10px;
+    }
+    #home h1{
+        margin: 5px;
+        font-size: 27px;
+    }
+    #home p{
+        font-size: 1rem;
+    }
+    .search{
+        margin: 80px;
+    }
+    /* .container{
+        font-size: 18px;
+    } */
+    .container h1{
+        text-align: center;
+        margin-left: 0;
+        font-size: 23px;
+    }
+    .input{
+        font-size: 15px;
+    }
+    .row{
+        width: 100%;
+        margin-left: 0;
+        flex-direction: column;
+    }
+    .row img{
+        margin: 2px;
+        margin-bottom: 10px;
+    }
+    .table thead{
+        display: none;
+    }
+    .table, .table tbody, .table tr, .table td{
+        display: block;
+        width: 100%;
+    }
+    .table tr{
+        margin-bottom: 13px;
+    }
+    .table td{
+        text-align: center;
+        /* padding-left: 40%; */
+        position: relative;
+        font-size: 15px;
+    }
+    .table td::before{
+        content: attr(data-label);
+        position: absolute;
+        left: 0;
+        width: 50%;
+        padding-left: 12px;
+        font-size: 17px;
+        font-weight: bold;
+        text-align: left;
+    }
+    .btn{
+        margin-left: 10px;
+        margin-top: 8px;
+        width: 30%;
+    }
+    .container{
+        width: 80%;
+        margin-left: 9%;
+    }
+}

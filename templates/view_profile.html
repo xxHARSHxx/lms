@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Librarian Profile</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Prompt:ital,wght@1,300&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Balsamiq+Sans:ital@1&family=Hind+Siliguri&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital@1&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{url_for('static', filename=('css/view_profile.css'))}}">
+</head>
+<body>
+    <header>
+        <a href="" class="logo">Librarian</a>
+        <input type="checkbox"  id="menu-bar">
+        <label for="menu-bar">Menu</label>
+        <nav class="navbar">
+            <ul>
+                <li>
+                    <a href="{{url_for('profile_lib')}}">Profile</a>
+                </li>
+                <li>
+                    <a href="#">Manage Books+</a>
+                    <ul>
+                        <li><a href="{{url_for('search_book_lib')}}">Search Book</a></li>
+                        <li><a href="{{url_for('add_book')}}">Add Book</a></li>
+                        <li><a href="{{url_for('remove_book')}}">Delete Book</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">Circulation+</a>
+                    <ul>
+                        <li><a href="{{url_for('issue_book')}}">Issue Book</a></li>
+                        <li>
+                            <a href="{{url_for('return_book')}}">Return Book</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">Reports+</a>
+                    <ul>
+                        <li><a href="{{url_for('issued_books')}}">Issued Books</a></li>
+                        <li><a href="{{url_for('reserved_books')}}">Reserved Books</a></li>
+                        <li>
+                            <a href="{{url_for('transaction_records')}}">All Transactions</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">Manage Shelf+</a>
+                        <ul>
+                            <li><a href="{{url_for('add_shelf')}}">Add Shelf</a></li>
+                            <li><a href="{{url_for('edit_shelf')}}">Edit Shelf</a></li>
+                            <li><a href="{{url_for('view_shelf')}}">View Shelf</a></li>
+                        </ul>
+                </li>
+                <li>
+                    <a href="#">Manage Users+</a>
+                    <ul>
+                        <li><a href="{{url_for('requests')}}">Requests</a></li>
+                        <li><a href="{{url_for('add_lib')}}">Add Librarian</a></li>
+                        <li><a href="{{url_for('delete_user')}}">Delete Users</a></li>
+                        <li><a href="{{url_for('view_members')}}">View Members</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="{{url_for('manage_fines')}}">Manage Fines</a>
+                </li>
+                <li>
+                    <a href="{{url_for('logout')}}"> Log Out</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <div class="cont">
+        <img src="{{url_for('static',filename=('css/images/profile.png'))}}" alt="cannot load img" width="90px" height="90px">
+        <table class="profile_table mt-5">
+                    
+            <tbody>
+                <tr>
+                    <td class="td"><i class="fa fa-user"></i>  User ID     :</td>
+                    <td>{{U_ID}}</td>
+                </tr>
+                <tr>
+                    <td><i class="fa fa-user"></i>  Name     :</td>
+                    <td>{{name}}</td>
+                </tr>
+                <tr>
+                    <td><i class="fa fa-envelope"></i>  Email ID :</td>
+                    <td>{{email}}</td>
+                </tr>
+                <tr>
+                    <td><i class="fa fa-envelope"></i>  Usertype :</td>
+                    <td>{{usertype}}</td>
+                </tr>
+                <tr>
+                    <td><i class="fa fa-address-card"></i>  Address  :</td>
+                    <td>{{address}}</td>
+                </tr>
+                <tr>
+                    <td><i class="fa fa-address-card"></i>  Unpaid Fines  :</td>
+                    <td>{{unpaid}}</td>
+                </tr>
+                <tr>
+                    <!-- <td><i class="fa fa-address-card"></i>  Membership Status  :</td>
+                    <td>{{status}}</td> -->
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="container">
+        <h4 align="center" class="msg">
+            <strong>{{msg}}</strong>
+        </h4>
+        <br>
+
+        {% if detail %}
+        <div class="table-container">
+            <h4 align="center" class="msg">
+                <strong>Books Issued</strong>
+            </h4>
+            <br>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">Accession Number</th>
+                        <th scope="col">Start Date</th>
+                        <th scope="col">Due Date</th>
+                        <th scope="col">Fine</th>
+                        <!-- View Detail Button -->
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for u in detail %}
+                    <tr>
+                        <td scope="col" data-label="Accession Number"> {{u['accession_number']}} </td>
+                        <td scope="col" data-label="Start Date"> {{u['start_date']}} </td>
+                        <td scope="col" data-label="Due Date"> {{u['due_date']}} </td>
+                        <td scope="col" data-label="Fine"> {{u['fine']}} </td>
+                        <!-- View Detail Button -->
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        {%endif%}
+    </div>
+
+    <div class="container">
+        <h4 align="center" class="msg">
+            <strong>{{msg2}}</strong>
+        </h4>
+        <br>
+
+        {% if reserve %}
+        <div class="table-container">
+            <h4 align="center" class="msg">
+                <strong>Books Reserved</strong>
+            </h4>
+            <br>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">Accession Number</th>
+                        <th scope="col">Start Date</th>
+                        <th scope="col">Due Date</th>
+                        <!-- View Detail Button -->
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for v in reserve %}
+                    <tr>
+                        <td scope="col" data-label="Accession Number"> {{v['accession_number']}} </td>
+                        <td scope="col" data-label="Start Date"> {{v['start_date']}} </td>
+                        <td scope="col" data-label="Due Date"> {{v['due_date']}} </td>
+                        <!-- View Detail Button -->
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        {%endif%}
+    </div>
+</body>
+</html>

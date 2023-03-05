@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Librarian Profile</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Prompt:ital,wght@1,300&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Balsamiq+Sans:ital@1&family=Hind+Siliguri&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital@1&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{url_for('static', filename=('css/data.css'))}}">
+</head>
+<body>
+    <header>
+        <a href="" class="logo">User</a>
+        <input type="checkbox"  id="menu-bar">
+        <label for="menu-bar">Menu</label>
+        <nav class="navbar">
+            <ul>
+                <li>
+                    <a href="{{url_for('profile')}}">Profile</a>
+                </li>
+                <li>
+                    <a href="{{url_for('search_book_user')}}">Search Book</a>
+                </li>
+                <li>
+                    <a href="#">My Bookshelf</a>
+                    <ul>
+                        <li><a href="{{url_for('books_issued')}}">Issued Book</a></li>
+                        <li>
+                            <a href="{{url_for('books_reserved')}}">Reserved Book</a>
+                        </li>
+                        <li><a href="{{url_for('wishlist')}}">Wishlist</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="{{url_for('transactions')}}">Transactions</a>
+                </li>
+                <li>
+                    <a href="#">Account Settings</a>
+                    <ul>
+                        <li><a href="{{url_for('update_profile')}}">Update Profile</a></li>
+                        <li><a href="{{url_for('delete_profile')}}">Delete Account</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="{{url_for('logout')}}"> Log Out</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <div class="search">
+        <form action="/search_book_user" method="post" class="searchbook">
+            <div class="box">
+                <i class="fa fa-address-book" aria-hidden="true"></i>
+                <input type="text" id="title" name="title" placeholder="Enter Title" class="input">
+            </div>
+            <div class="box">
+                <i class="fa fa-address-book" aria-hidden="true"></i>
+                <input type="text" id="author" name="author" placeholder="Enter Author" class="input">
+            </div>
+            <div class="box">
+                <i class="fa fa-address-book" aria-hidden="true"></i>
+                <input type="text" id="genre" name="genre" placeholder="Enter Genre" class="input">
+            </div>
+            <div class="box">
+                <i class="fa fa-list-ol" aria-hidden="true"></i>
+                <input type="text" id="isbn" name="isbn" placeholder="Enter ISBN" class="input">
+            </div>
+            <input type="submit" value="Search" class="book">
+        </form>
+    </div>
+    <br>
+    <br>
+    
+        <div class = "container" >
+        {% if detail !="No records found"%}
+            <h4 align="center" class="msg">
+                <strong>{{msg}}</strong>
+            </h4>
+            <br>
+      
+            {% if detail %}
+            <div class="table-container">
+                    <table class="table ">
+                        <thead>
+                        <tr>
+                          <th scope="col">Accession Number</th>
+                          <th scope="col">ISBN</th>
+                          <th scope="col">Title</th>
+                          <th scope="col">Author</th>
+                          <th scope="col">Genre</th>
+                          <th scope="col">Status</th>
+                          <th scope="col">Reserved</th>
+                          <th scope="col">Action</th>
+                        </tr>
+                      </thead>
+                        <tbody>
+                      {% for u in detail %}
+                            <tr>
+                                <td data-label="ISBN"> {{u['accession_number']}} </td>
+                                <td data-label="ISBN"> {{u['ISBN']}} </td>
+                                <td data-label="Title"> {{u['title']}} </td>
+                                <td data-label="Author"> {{u['author']}} </td>
+                                <td data-label="Genre"> {{u['genre']}} </td>
+                                <td data-label="Issue Status"> {{u['book_shelf_status']}} </td>
+                                <td data-label="Reserve Status"> {{u['book_reserve_status']}} </td>
+                                <!-- <td data-label="Year Of Publication"> {{u['year_of_publication']}} </td> -->
+                                <td data-label="Action">
+                                    <button class="action"><a href="{{url_for('reserve_book',id=u['accession_number'])}}">Reserve</a></button> 
+                                    <button class="action"><a href="{{url_for('add_wishlist', id=u['accession_number'])}}">Wishlist</a></button> 
+                                </td>
+                            </tr>
+                      {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            {%endif%}
+            </div>
+            {%else%}
+                <h4 align="center" class="msg">
+                    <strong>{{detail}}</strong>
+                </h4>
+            {%endif%}
+    
+        </div>
+        </div>   
+    </div>
+
+</body>
+</html>

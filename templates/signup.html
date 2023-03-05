@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <script src="https://kit.fontawesome.com/df1c5dc67f.js" crossorigin="anonymous"></script> -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Prompt:ital,wght@1,300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/login.css') }}">
+    <link rel="stylesheet" media="screen and (max-width:1000px)" href="{{ url_for('static', filename='css/phone.css') }}">
+    <title>Register</title>
+</head>
+<body>
+    <div class="home">
+        <a href="{{url_for('home')}}">Home </a>|
+        <a href="{{url_for('signin')}}">Sign In</a>
+    </div>
+    <div class="container">
+        <h1>Register</h1>
+        <form action="/signup" method="POST" class="form">
+            <div class="box">
+                <i class="fa fa-user" aria-hidden="true"></i>
+                <input type="text" name="name" id="name" placeholder="Enter Your Name" class="input">	
+            </div>
+            <div class="box">
+                <i class="fa fa-envelope"></i>
+                <input type="text" name="email" id="email" placeholder="Enter Your Email" class="input">	
+            </div>
+            <div class="box">
+                <i class="fa fa-users"></i>
+                <select name="usertype" id="usertype" class="select">
+                    <option value="" id="default" >Choose User Type</option>
+                    <option value="student" class="option">Student</option>
+                    <option value="faculty" class="option">Faculty</option>
+                </select>
+            </div>
+            <div class="box">
+                <i class="fa fa-address-card"></i>
+                <input type="text" name="address" id="address" placeholder="Enter Your Address" class="input">	
+            </div>
+            <div class="box">
+                <i class="fa fa-lock"></i>    
+                <input type="password" name="password" id="password" placeholder="Enter Your Password" class="input"><br>
+            </div>
+            <div class="box">    
+                <i class="fa fa-lock"></i>
+                <input type="password" name="cpassword" id="cpassword" placeholder="Confirm Password" class="input"><br>
+            </div>
+            <input type="submit" value="Register" class="btn">
+        </form>
+        <p>{{msg}}</p>
+        <p class="redirect">
+            Already have an account? <a href="{{url_for('signin')}}">Sign In Here</a>
+        </p>
+    </div>
+</body>
+</html>

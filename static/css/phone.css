@@ -1,0 +1,19 @@
+body::before{
+    width: 100%;
+    opacity: 0.4;
+}
+.container{
+    left: 30%;
+    width: 40%;
+}
+.container h1{
+    font-size: 30px;
+}
+.input::placeholder{
+    color: rgb(95, 94, 94);
+}
+.btn{
+    width: 47%;
+    font-size: 14px;
+    padding: 1px 0px;
+}
